@@ -1,0 +1,91 @@
+@layer components {
+  .notice-ticker {
+    padding-block: 0;
+    border-block-end: var(--line) solid var(--notice-ticker-background);
+    background: var(--notice-ticker-background);
+    color: var(--notice-ticker-foreground);
+  }
+
+  .notice-ticker[hidden] {
+    display: none;
+  }
+
+  .notice-ticker__content {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
+    min-height: var(--notice-header-height);
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  .notice-ticker__label {
+    justify-self: start;
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-pill);
+    background: var(--notice-ticker-label-background);
+    color: var(--notice-ticker-label-foreground);
+    font-size: var(--fs-14);
+    font-weight: 700;
+  }
+
+  .notice-ticker__link {
+    min-width: 0;
+    width: 100%;
+    overflow: hidden;
+    color: inherit;
+    font-size: var(--fs-14);
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .notice-ticker__controls {
+    display: flex;
+    justify-self: end;
+    align-items: center;
+    gap: var(--space-1);
+  }
+
+  .notice-ticker__button {
+    display: grid;
+    width: var(--hit-min);
+    min-height: var(--hit-min);
+    place-items: center;
+    border: var(--line) solid currentColor;
+    border-radius: 0;
+    color: var(--notice-ticker-foreground);
+    font-size: var(--fs-14);
+  }
+
+  .notice-ticker__button:hover:not(:disabled) {
+    background: var(--chip-fill-on-dark);
+  }
+
+  .notice-ticker__button[aria-pressed="true"] {
+    background: var(--chip-fill-on-dark);
+  }
+
+  .notice-ticker__button:disabled {
+    color: var(--notice-ticker-foreground);
+    cursor: default;
+  }
+
+  body.notice-ticker-visible {
+    --menu-top: calc(var(--header-h-pc) + var(--notice-header-height) + var(--line));
+  }
+
+  body.notice-ticker-visible .outer-box--header {
+    inset-block-start: calc(var(--notice-header-height) + var(--line));
+  }
+
+  @media (max-width: 768px) {
+    .notice-ticker__content {
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      gap: var(--space-1);
+    }
+
+    .notice-ticker__controls {
+      gap: 0;
+    }
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "title": "TREND PICK",
+  "subtitle": "디스커버러의 취향",
+  "moreUrl": "/brand/style-pick/discoverer-picks",
+  "moreIcon": "/_next/static/media/arrow-right-main-pc.94a58b4c.svg",
+  "categories": [
+    "숏패딩",
+    "경량패딩",
+    "경량자켓",
+    "후드티"
+  ],
+  "activeCategory": "숏패딩",
+  "picks": [
+    {
+      "id": "3568",
+      "username": "@see_nooon",
+      "detailUrl": "/brand/style-pick/discoverer-picks/3568",
+      "image": "https://static-resource-influencer.fnf.co.kr/cdn-cgi/image/q=75,w=858,q=100,format=png,onerror=redirect/instagram/sns/7fa71929-62ab-4f85-b640-eaeafe7f130c/4014235131157475318.JPEG",
+      "products": [
+        {
+          "productCode": "DWDJ9G166-BKS",
+          "name": "여성 에어웰 헤이니 숏패딩 (벨로)",
+          "price": 309000,
+          "productUrl": "/product-detail/DWDJ9G166-BKS",
+          "image": "https://static-resource.discovery-expedition.com/cdn-cgi/image/q=75,w=168,format=auto,fit=scale-down,onerror=redirect/images/goods/ec/X26FDWDJ9G166BKS/thnail/E94B942446994CCA9FC20FF7FF20FE7C.png"
+        },
+        {
+          "productCode": "DWDJ9G166-IVS",
+          "name": "여성 에어웰 헤이니 숏패딩 (벨로)",
+          "price": 309000,
+          "productUrl": "/product-detail/DWDJ9G166-IVS",
+          "image": "https://static-resource.discovery-expedition.com/cdn-cgi/image/q=75,w=168,format=auto,fit=scale-down,onerror=redirect/images/goods/ec/X26FDWDJ9G166IVS/thnail/3A87E253AB974DEB9AEF0F785E30244E.png"
+        }
+      ]
+    },
+    {
+      "id": "3569",
+      "username": "@z___meme",
+      "detailUrl": "/brand/style-pick/discoverer-picks/3569",
+      "image": "https://static-resource-influencer.fnf.co.kr/cdn-cgi/image/q=75,w=858,q=100,format=png,onerror=redirect/instagram/sns/5e7322ab-4a4f-440b-a50c-2c69fc4b0d43/4014894848888059192.JPEG",
+      "products": [
+        {
+          "productCode": "DWDJ9G266-EGS",
+          "name": "여성 에어웰 헤이니 숏패딩 (글로시)",
+          "price": 299000,
+          "productUrl": "/product-detail/DWDJ9G266-EGS",
+          "image": "https://static-resource.discovery-expedition.com/cdn-cgi/image/q=75,w=168,format=auto,fit=scale-down,onerror=redirect/images/goods/ec/X26FDWDJ9G266EGS/thnail/BF517C7A9D46461DA4C0B60EE4298D14.png"
+        },
+        {
+          "productCode": "DWDJ9G266-GRL",
+          "name": "여성 에어웰 헤이니 숏패딩 (글로시)",
+          "price": 299000,
+          "productUrl": "/product-detail/DWDJ9G266-GRL",
+          "image": "https://static-resource.discovery-expedition.com/cdn-cgi/image/q=75,w=168,format=auto,fit=scale-down,onerror=redirect/images/goods/ec/X26FDWDJ9G266GRL/thnail/E44379B8E49446EEAC9DE7E5672DFE49.png"
+        }
+      ]
+    },
+    {
+      "id": "3570",
+      "username": "@jex_xy",
+      "detailUrl": "/brand/style-pick/discoverer-picks/3570",
+      "image": "https://influencermarketing.fnf.co.kr/uploads/sns/20261026145830_스크린샷_2026-10-26_145808.png",
+      "products": [
+        {
+          "productCode": "DWDJ9G266-EGS",
+          "name": "여성 에어웰 헤이니 숏패딩 (글로시)",
+          "price": 299000,
+          "productUrl": "/product-detail/DWDJ9G266-EGS",
+          "image": "https://static-resource.discovery-expedition.com/cdn-cgi/image/q=75,w=168,format=auto,fit=scale-down,onerror=redirect/images/goods/ec/X26FDWDJ9G266EGS/thnail/BF517C7A9D46461DA4C0B60EE4298D14.png"
+        },
+        {
+          "productCode": "DWDJ9G266-GRL",
+          "name": "여성 에어웰 헤이니 숏패딩 (글로시)",
+          "price": 299000,
+          "productUrl": "/product-detail/DWDJ9G266-GRL",
+          "image": "https://static-resource.discovery-expedition.com/cdn-cgi/image/q=75,w=168,format=auto,fit=scale-down,onerror=redirect/images/goods/ec/X26FDWDJ9G266GRL/thnail/E44379B8E49446EEAC9DE7E5672DFE49.png"
+        }
+      ]
+    }
+  ]
+}

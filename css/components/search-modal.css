@@ -1,0 +1,510 @@
+@layer components {
+  .search-modal {
+    position: fixed;
+    inset: 0;
+    z-index: var(--z-menu);
+    display: flex;
+    flex-direction: column;
+    background: var(--color-bg);
+    color: var(--color-text);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity var(--duration-base) var(--ease-standard),
+      visibility var(--duration-base) var(--ease-standard);
+  }
+
+  .search-modal[data-state="open"] {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  /* 상단 고정 헤더 라인 */
+  .search-modal__header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--color-bg);
+    border-bottom: 1px solid var(--color-border);
+    padding-block: 20px;
+  }
+
+  .search-modal__header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    width: 100%;
+    max-width: var(--inner-max);
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+  }
+
+  .search-modal__form {
+    flex: 1 1 auto;
+    max-width: 720px;
+    margin-inline: auto;
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid var(--color-text-strong);
+    padding-bottom: 8px;
+  }
+
+  .search-modal__input {
+    flex: 1 1 auto;
+    border: 0;
+    outline: none;
+    background: transparent;
+    font-size: var(--fs-18);
+    color: var(--color-text);
+    font-family: inherit;
+  }
+
+  .search-modal__input::placeholder {
+    color: var(--color-text-faint);
+  }
+
+  .search-modal__submit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--color-text);
+    cursor: pointer;
+  }
+
+  .search-modal__submit svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .search-modal__close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--color-text);
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+
+  .search-modal__close svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  /* 스크롤 가능한 본문 영역 */
+  .search-modal__body {
+    flex: 1 1 auto;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-block: 36px 60px;
+  }
+
+  .search-modal__container {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+    width: 100%;
+    max-width: var(--inner-max);
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+  }
+
+  /* 최근 검색어 & 인기 검색어 */
+  .search-modal__keywords-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+  }
+
+  .search-modal__section-title {
+    font-size: var(--fs-18);
+    font-weight: 700;
+    color: var(--color-text-strong);
+    margin-bottom: 16px;
+  }
+
+  .search-modal__recent-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  .search-modal__clear-all {
+    font-size: var(--fs-12);
+    color: var(--color-text-muted);
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  .search-modal__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .search-modal__tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-pill);
+    font-size: var(--fs-12);
+    color: var(--color-text);
+    background: var(--color-bg);
+  }
+
+  .search-modal__tag-remove {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    background: transparent;
+    padding: 0;
+    color: var(--color-text-sub);
+    cursor: pointer;
+    font-size: var(--fs-14);
+    line-height: 1;
+  }
+
+  /* 인기 검색어 2열 리스트 */
+  .search-modal__popular-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px 24px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .search-modal__popular-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: var(--fs-14);
+  }
+
+  .search-modal__rank-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 2px;
+    background: var(--color-primary);
+    color: var(--color-on-primary);
+    font-size: var(--fs-10);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .search-modal__popular-keyword {
+    color: var(--color-text);
+    text-decoration: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .search-modal__popular-keyword--highlight {
+    color: #2b77b8;
+  }
+
+  /* 이번주 BEST 섹션 */
+  .search-modal__best {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .search-modal__tabs {
+    display: flex;
+    gap: 16px;
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 4px;
+  }
+
+  .search-modal__tab {
+    position: relative;
+    padding-block: 6px 10px;
+    font-size: var(--fs-14);
+    color: var(--color-text-muted);
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    font-weight: 500;
+  }
+
+  .search-modal__tab--active {
+    color: var(--color-text-strong);
+    font-weight: 700;
+  }
+
+  .search-modal__tab--active::after {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    inset-block-end: -5px;
+    height: 2px;
+    background: var(--color-text-strong);
+  }
+
+  /* 상품 카드 그리드 */
+  .search-modal__products {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+  }
+
+  .search-card {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .search-card__thumbnail {
+    position: relative;
+    aspect-ratio: 3 / 4;
+    background: var(--color-surface);
+    overflow: hidden;
+  }
+
+  .search-card__thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .search-card__rank {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 24px;
+    height: 24px;
+    background: var(--color-primary);
+    color: var(--color-on-primary);
+    font-size: var(--fs-12);
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .search-card__content {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding-top: 12px;
+  }
+
+  .search-card__title {
+    font-size: var(--fs-12);
+    font-weight: 500;
+    line-height: var(--lh-16);
+    color: var(--color-text);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .search-card__price {
+    font-size: var(--fs-14);
+    font-weight: 700;
+    color: var(--color-text-strong);
+  }
+
+  .search-card__colors {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    min-height: 14px;
+  }
+
+  .search-card__color-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: var(--radius-round);
+    border: 1px solid rgba(0, 0, 0, 0.12);
+  }
+
+  /* 색상 스와치 클래스 */
+  .search-card__color-dot--beige { background-color: #ded7cb; }
+  .search-card__color-dot--ivory { background-color: #ede8df; }
+  .search-card__color-dot--black { background-color: #1a1a1a; }
+  .search-card__color-dot--charcoal { background-color: #4a4d52; }
+  .search-card__color-dot--teal { background-color: #2b565a; }
+  .search-card__color-dot--navy { background-color: #2b3952; }
+  .search-card__color-dot--gray { background-color: #9299a4; }
+  .search-card__color-dot--light-blue { background-color: #7b8898; }
+  .search-card__color-dot--white { background-color: #ffffff; }
+  .search-card__color-dot--skyblue { background-color: #9bbad4; }
+
+  .search-card__color-more {
+    font-size: var(--fs-10);
+    color: var(--color-text-muted);
+    line-height: 1;
+  }
+
+  .search-card__reactions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 2px;
+    font-size: var(--fs-12);
+    color: var(--color-text-muted);
+  }
+
+  .search-card__reaction {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .search-card__reaction svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  /* 프로모션 배너 */
+  .search-modal__benefit {
+    position: relative;
+    padding: 36px 24px;
+    background: linear-gradient(135deg, #071527 0%, #0d213a 50%, #08172c 100%);
+    color: #ffffff;
+    text-align: center;
+    border-radius: 0;
+    overflow: hidden;
+    box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.4);
+  }
+
+  .search-modal__benefit::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: 
+      linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 24px 24px;
+    pointer-events: none;
+  }
+
+  .search-modal__benefit-title {
+    position: relative;
+    font-size: var(--fs-20);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 6px;
+  }
+
+  .search-modal__benefit-desc {
+    position: relative;
+    font-size: var(--fs-12);
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  /* 모바일 미디어 쿼리 */
+  @media (max-width: 768px) {
+    .search-modal__header {
+      padding-block: 12px;
+    }
+
+    .search-modal__header-inner {
+      gap: 10px;
+    }
+
+    .search-modal__form {
+      max-width: 100%;
+      border-bottom: 1px solid var(--color-border);
+      padding-bottom: 6px;
+    }
+
+    .search-modal__input {
+      font-size: var(--fs-16);
+    }
+
+    .search-modal__body {
+      padding-block: 20px 40px;
+    }
+
+    .search-modal__container {
+      gap: 28px;
+    }
+
+    /* 모바일에서는 인기 검색어 아래에 배너가 오도록 order 활용 */
+    .search-modal__keywords-row {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .search-modal__popular-list {
+      display: flex;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      gap: 16px;
+      padding-bottom: 8px;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+
+    .search-modal__popular-list::-webkit-scrollbar {
+      display: none;
+    }
+
+    .search-modal__popular-item {
+      flex: 0 0 auto;
+    }
+
+    /* 모바일 배치: 최근 검색어/인기검색어 -> 배너 -> 이번주 BEST */
+    .search-modal__benefit {
+      order: 1;
+      padding: 20px 16px;
+    }
+
+    .search-modal__benefit-title {
+      font-size: var(--fs-14);
+    }
+
+    .search-modal__benefit-desc {
+      font-size: var(--fs-10);
+    }
+
+    .search-modal__best {
+      order: 2;
+    }
+
+    /* 모바일 상품 목록: 가로 스와이프 */
+    .search-modal__products {
+      display: flex;
+      overflow-x: auto;
+      gap: 12px;
+      scroll-snap-type: x mandatory;
+      padding-bottom: 12px;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+
+    .search-modal__products::-webkit-scrollbar {
+      display: none;
+    }
+
+    .search-card {
+      flex: 0 0 46%;
+      scroll-snap-align: start;
+    }
+  }
+}

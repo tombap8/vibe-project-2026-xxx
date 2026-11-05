@@ -1,0 +1,17 @@
+@layer reset, vendor, tokens, base, layout, components, utilities;
+
+@import "../vendor/swiper/swiper-bundle.min.css" layer(vendor);
+@import "./tokens.css" layer(tokens);
+@import "./base.css";
+@import "./layout.css";
+@import "./components/header.css";
+@import "./components/hero.css";
+@import "./components/full-menu.css";
+@import "./components/search-modal.css";
+@import "./components/shorts.css";
+@import "./components/best-item.css";
+@import "./components/collection.css";
+@import "./components/trend-pick.css";
+@import "./components/footer.css";
+@import "./components/shop-pages.css";
+@import "./utilities.css";

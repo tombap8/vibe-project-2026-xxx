@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ko" class="shop-document">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>장바구니 | Discovery Expedition</title>
+    <meta name="description" content="장바구니에 담은 디스커버리 익스페디션 상품을 확인하세요.">
+    <link rel="stylesheet" href="../css/main.css">
+    <script type="module" src="../js/modules/shop-page.js"></script>
+  </head>
+  <body class="shop-page" data-shop-page="cart">
+    <header class="outer-box shop-header">
+      <div class="inner-box">
+        <div class="part-box shop-header__content">
+          <a class="shop-header__brand" href="../index.html" aria-label="Discovery Expedition 홈">
+            <img src="../images/used/main-logo.svg" alt="" width="133" height="28">
+          </a>
+          <nav class="shop-header__actions" aria-label="쇼핑 메뉴">
+            <a href="../index.html" aria-label="홈">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-6v-7h-4v7H4a1 1 0 0 1-1-1V10Z"></path></svg>
+            </a>
+            <a class="cart-indicator" href="./cart.html" aria-label="장바구니">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l1 13H4L5 8Z"></path><path d="M9 9V6a3 3 0 0 1 6 0v3"></path></svg>
+              <span class="cart-indicator__count" data-js="cart-count" aria-live="polite" hidden>0</span>
+            </a>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <p class="shop-status" data-js="shop-status" role="status" aria-live="polite"></p>
+      <section class="outer-box shop-page__section" aria-labelledby="cart-page-title">
+        <div class="inner-box">
+          <header class="shop-page__heading">
+            <p class="shop-page__eyebrow">SHOPPING</p>
+            <h1 id="cart-page-title">장바구니</h1>
+          </header>
+          <div class="part-box cart-layout">
+            <section class="cart-layout__items" aria-label="장바구니 상품 목록" data-js="cart-items" aria-live="polite">
+              <p class="cart-empty">장바구니를 불러오고 있습니다.</p>
+            </section>
+            <aside class="cart-summary" aria-labelledby="cart-summary-title">
+              <h2 id="cart-summary-title">결제정보</h2>
+              <div class="cart-summary__row">
+                <span>상품 금액</span>
+                <strong data-js="cart-total">0원</strong>
+              </div>
+              <div class="cart-summary__row">
+                <span>배송비</span>
+                <span>무료배송</span>
+              </div>
+              <div class="cart-summary__total">
+                <strong>총 결제금액</strong>
+                <strong data-js="cart-total">0원</strong>
+              </div>
+              <button class="shop-button" type="button" disabled>주문하기</button>
+            </aside>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

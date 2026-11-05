@@ -1,0 +1,212 @@
+@layer components {
+  .hero {
+    position: relative;
+    height: 100vh;
+    height: 100dvh;
+    min-height: var(--hero-height);
+    overflow: hidden;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    background: var(--color-hero-placeholder);
+    color: var(--color-text-inverse);
+    --focus-color: var(--color-text-inverse);
+  }
+
+  .hero__inner {
+    height: 100%;
+    min-height: var(--hero-height);
+  }
+
+  .hero__stage {
+    position: relative;
+    flex-wrap: nowrap;
+    height: 100%;
+    min-height: var(--hero-height);
+    align-items: stretch;
+    padding: var(--hero-top-inset) var(--hero-inset) var(--hero-content-pb);
+  }
+
+  .hero__image {
+    position: absolute;
+    z-index: 0;
+    inset: 0;
+    background-position: center;
+    background-size: cover;
+  }
+
+  .hero__image::after {
+    position: absolute;
+    inset: 0;
+    background: var(--overlay-hero);
+    content: "";
+  }
+
+  .hero--slide-1 .hero__image {
+    background-image: url("../../images/used/discovery-dt-68.jpg");
+  }
+
+  .hero--slide-2 .hero__image {
+    background-image: url("../../images/used/discovery-dt-62.jpg");
+  }
+
+  .hero--slide-3 .hero__image {
+    background-image: url("../../images/used/discovery-dt-67.jpg");
+  }
+
+  .hero__copy {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: var(--hero-copy-gap);
+    max-width: var(--hero-copy-width);
+  }
+
+  .hero__title {
+    display: flex;
+    flex-direction: column;
+    font-size: var(--fs-hero-title);
+    font-weight: 700;
+    line-height: var(--lh-hero-title);
+    overflow-wrap: anywhere;
+    word-break: keep-all;
+  }
+
+  .hero__description {
+    font-size: var(--fs-hero-description);
+    font-weight: 400;
+    line-height: var(--lh-hero-description);
+    word-break: keep-all;
+  }
+
+  .hero__pagination {
+    position: fixed;
+    z-index: var(--z-floating);
+    inset-block-start: 50%;
+    inset-inline-end: var(--pagination-inset);
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    gap: var(--pagination-gap);
+    transform: translateY(-50%);
+  }
+
+  .hero__pagination-item {
+    display: block;
+    width: var(--pagination-width);
+    height: var(--pagination-height);
+    padding: 0;
+    border: 0;
+    border-radius: var(--pagination-radius);
+    background: var(--color-text-inverse);
+    opacity: var(--pagination-opacity);
+    cursor: pointer;
+    transition: height var(--duration-base) var(--ease-standard), opacity var(--duration-base) var(--ease-standard);
+  }
+
+  .hero__pagination-item--active {
+    height: var(--pagination-active-height);
+    opacity: 1;
+  }
+
+  .hero__pagination-item:focus-visible {
+    outline: var(--focus-outline) solid var(--color-text-inverse);
+    outline-offset: var(--focus-offset);
+  }
+
+  .floating-actions {
+    position: fixed;
+    z-index: var(--z-floating);
+    inset-block-end: var(--floating-inset);
+    inset-inline-end: var(--floating-inset-inline);
+    display: flex;
+    flex-direction: column;
+    gap: var(--floating-gap);
+  }
+
+  .floating-actions__button {
+    display: flex;
+    width: var(--floating-btn);
+    height: var(--floating-btn);
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-round);
+    background: var(--color-bg);
+    color: var(--color-text);
+  }
+
+  .floating-actions__button img {
+    width: var(--floating-icon);
+    height: var(--floating-icon);
+  }
+
+  .tabbar {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    .hero--slide-1 .hero__image {
+      background-image: url("../../images/used/discovery-mob-50.jpg");
+      background-position: var(--hero-mobile-bg-position);
+      background-size: var(--hero-mobile-bg-size);
+    }
+
+    .hero--slide-2 .hero__image {
+      background-image: url("../../images/used/discovery-mob-46.jpg");
+      background-position: center;
+      background-size: cover;
+    }
+
+    .hero--slide-3 .hero__image {
+      background-image: url("../../images/used/discovery-mob-42.jpg");
+      background-position: center;
+      background-size: cover;
+    }
+
+    .hero__stage {
+      padding-block-start: var(--hero-top-inset);
+    }
+
+    .hero__pagination {
+      inset-inline-end: var(--pagination-inset);
+    }
+
+    .tabbar {
+      position: fixed;
+      z-index: var(--z-tabbar);
+      inset: auto 0 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: var(--tabbar-padding-block) var(--tabbar-padding-inline) calc(var(--tabbar-padding-block) + env(safe-area-inset-bottom, 0px));
+      color: var(--color-text-inverse);
+    }
+
+    .tabbar__item {
+      display: flex;
+      min-width: var(--tabbar-item-min);
+      min-height: var(--bottom-bar-height);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: var(--tabbar-item-gap);
+      color: var(--color-text-inverse);
+      font-size: var(--fs-10);
+      line-height: var(--lh-16);
+      white-space: nowrap;
+    }
+
+    .tabbar__item img {
+      width: var(--tabbar-icon-size);
+      height: var(--tabbar-icon-size);
+    }
+
+    .tabbar__item--home img {
+      width: var(--tabbar-home-width);
+      height: var(--tabbar-home-height);
+      object-fit: contain;
+    }
+  }
+}

@@ -1,0 +1,82 @@
+[
+  {
+    "id": "best-1",
+    "rank": 1,
+    "name": "여성 픽토르U 구스다운 경량패딩",
+    "price": 179000,
+    "image": "../images/used/best-p1-main.png",
+    "hoverImage": "../images/used/best-p1-hover.png"
+  },
+  {
+    "id": "best-2",
+    "rank": 2,
+    "name": "유니 테크플리스 후드 자켓",
+    "price": 179000,
+    "image": "../images/used/best-p2-main.png",
+    "hoverImage": "../images/used/best-p2-hover.png"
+  },
+  {
+    "id": "best-3",
+    "rank": 3,
+    "name": "여성 에어웰 올리아 숏패딩",
+    "price": 299000,
+    "image": "../images/used/best-p3-main.png",
+    "hoverImage": "../images/used/best-p3-hover.png"
+  },
+  {
+    "id": "best-4",
+    "rank": 4,
+    "name": "여성 레스터G 구스다운 롱패딩",
+    "price": 439000,
+    "image": "../images/used/best-p4-main.png",
+    "hoverImage": "../images/used/best-p4-hover.png"
+  },
+  {
+    "id": "best-5",
+    "rank": 5,
+    "name": "여성 에어웰 켈리 구스 미드패딩",
+    "price": 519000,
+    "image": "../images/used/best-p5-main.png",
+    "hoverImage": "../images/used/best-p5-hover.png"
+  },
+  {
+    "id": "best-6",
+    "rank": 6,
+    "name": "유니 에어웰 웰니스 숏패딩",
+    "price": 339000,
+    "image": "../images/used/best-p6-main.png",
+    "hoverImage": "../images/used/best-p6-hover.png"
+  },
+  {
+    "id": "best-7",
+    "rank": 7,
+    "name": "여성 테크플리스 후드 자켓",
+    "price": 169000,
+    "image": "../images/used/best-p7-main.png",
+    "hoverImage": "../images/used/best-p7-hover.png"
+  },
+  {
+    "id": "best-8",
+    "rank": 8,
+    "name": "여성 에어웰 뉴올리아 숏패딩 (벨로)",
+    "price": 309000,
+    "image": "../images/used/best-p8-main.png",
+    "hoverImage": "../images/used/best-p8-hover.png"
+  },
+  {
+    "id": "best-9",
+    "rank": 9,
+    "name": "여성 에어웰 켈리 구스 롱패딩",
+    "price": 599000,
+    "image": "../images/used/best-p9-main.png",
+    "hoverImage": "../images/used/best-p9-hover.png"
+  },
+  {
+    "id": "best-10",
+    "rank": 10,
+    "name": "여성 에어웰 헤이니 숏패딩 (벨로)",
+    "price": 309000,
+    "image": "../images/used/best-p10-main.png",
+    "hoverImage": "../images/used/best-p10-hover.png"
+  }
+]

@@ -1,0 +1,165 @@
+@layer components {
+  .header__content {
+    min-height: var(--header-h-pc);
+    align-items: center;
+    gap: var(--header-content-gap);
+    padding-block: var(--header-mobile-padding-top) var(--header-mobile-padding-bottom);
+    flex-wrap: nowrap;
+  }
+
+  /* --- 기본 헤더 스타일 (1, 2, 3페이지 히어로 슬라이드용 다크 테마) --- */
+  .outer-box--header {
+    --focus-color: var(--color-text-inverse);
+    background: var(--header-bg);
+    border-bottom: 1px solid transparent;
+    color: var(--color-text-inverse);
+    transition: background-color var(--duration-base) var(--ease-standard),
+                border-color var(--duration-base) var(--ease-standard),
+                color var(--duration-base) var(--ease-standard);
+  }
+
+  .brand {
+    display: flex;
+    flex: 1 1 0;
+    align-items: center;
+    justify-content: flex-start;
+    min-width: 0;
+  }
+
+  .brand img {
+    width: var(--brand-logo-width);
+    height: var(--brand-logo-height);
+    filter: none;
+    transition: filter var(--duration-base) var(--ease-standard);
+  }
+
+  .header__navigation {
+    display: flex;
+    flex: 0 0 auto;
+    justify-content: center;
+    order: 0;
+  }
+
+  .header__categories {
+    gap: var(--category-gap);
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
+  }
+
+  .header__category {
+    display: block;
+    padding: var(--category-padding-block) var(--category-padding-inline);
+    border: var(--category-border) solid transparent;
+    border-radius: var(--radius-pill);
+    color: var(--color-text-inverse);
+    font-size: var(--fs-category);
+    font-weight: 500;
+    line-height: var(--lh-category);
+    white-space: nowrap;
+    transition: background-color var(--duration-fast) var(--ease-standard),
+                border-color var(--duration-fast) var(--ease-standard),
+                color var(--duration-fast) var(--ease-standard);
+  }
+
+  .header__category--active {
+    border-color: var(--color-border-on-dark);
+    background: var(--chip-fill-on-dark);
+    color: var(--color-text-inverse);
+    font-weight: 700;
+  }
+
+  .header__actions {
+    display: flex;
+    flex: 1 1 0;
+    align-items: center;
+    justify-content: flex-end;
+    gap: var(--header-action-gap);
+    min-width: 0;
+  }
+
+  .icon-button {
+    display: flex;
+    flex: 0 0 var(--icon-btn);
+    min-width: var(--hit-min);
+    min-height: var(--hit-min);
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-inverse);
+    transition: color var(--duration-base) var(--ease-standard);
+  }
+
+  .icon-button img {
+    width: var(--icon-size);
+    height: var(--icon-size);
+    filter: none;
+    transition: filter var(--duration-base) var(--ease-standard);
+  }
+
+  /* --- 3페이지 하단 (숏츠 및 일반 콘텐츠 영역용 화이트 반전 테마) 및 전체 메뉴 오픈 시 --- */
+  .outer-box--header.outer-box--header--light,
+  body.menu-open .outer-box--header {
+    --focus-color: var(--color-primary);
+    background: var(--color-bg);
+    border-bottom: 1px solid var(--color-border);
+    color: var(--color-text);
+  }
+
+  .outer-box--header.outer-box--header--light .brand img,
+  body.menu-open .outer-box--header .brand img {
+    filter: brightness(0);
+  }
+
+  .outer-box--header.outer-box--header--light .header__category {
+    color: var(--color-text);
+  }
+
+  .outer-box--header.outer-box--header--light .header__category--active {
+    border-color: var(--color-primary);
+    background: var(--color-primary);
+    color: var(--color-on-primary);
+    font-weight: 700;
+  }
+
+  .outer-box--header.outer-box--header--light .icon-button,
+  body.menu-open .outer-box--header .icon-button {
+    color: var(--color-text);
+  }
+
+  .outer-box--header.outer-box--header--light .icon-button img,
+  body.menu-open .outer-box--header .icon-button img {
+    filter: brightness(0);
+  }
+
+  body.menu-open .outer-box--header .header__navigation {
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  @media (max-width: 768px) {
+    .header__content {
+      min-height: 0;
+      padding-block: var(--header-mobile-padding-top) var(--header-mobile-padding-bottom);
+    }
+
+    .brand,
+    .header__actions {
+      display: none;
+    }
+
+    .header__navigation {
+      flex: 1 1 100%;
+      justify-content: center;
+    }
+
+    .header__categories {
+      max-width: 100%;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .header__categories::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}

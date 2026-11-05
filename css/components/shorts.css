@@ -1,0 +1,412 @@
+@layer components {
+  .section-shorts {
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding-top: calc(var(--header-h-pc) + 40px);
+    padding-bottom: 60px;
+    background: var(--color-bg);
+  }
+
+  .shorts__container {
+    width: 100%;
+  }
+
+  .shorts__header {
+    width: 100%;
+    margin-bottom: 24px;
+  }
+
+  .shorts__title {
+    font-size: var(--fs-24);
+    font-weight: 700;
+    line-height: var(--lh-32);
+    color: var(--color-text-strong);
+    letter-spacing: -0.02em;
+  }
+
+  .shorts__list {
+    width: 100%;
+    display: flex;
+    gap: 16px;
+    align-items: stretch;
+  }
+
+  .shorts-card {
+    flex: 1 1 0;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+    border-radius: 12px;
+  }
+
+  .shorts-card__video-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 9 / 16;
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: var(--color-surface-2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+  }
+
+  .shorts-card__thumbnail {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform var(--duration-base) var(--ease-standard);
+  }
+
+  .shorts-card:hover .shorts-card__thumbnail {
+    transform: scale(1.03);
+  }
+
+  .shorts-card__video-element {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .shorts-card__badges {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    z-index: 3;
+  }
+
+  .shorts-card__play {
+    width: 26px;
+    height: 26px;
+    border-radius: var(--radius-round);
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000000;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+    transition: transform var(--duration-fast);
+  }
+
+  .shorts-card:hover .shorts-card__play {
+    transform: scale(1.1);
+  }
+
+  .shorts-card__play svg {
+    margin-left: 2px;
+  }
+
+  .shorts-card__views {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 8px;
+    border-radius: var(--radius-pill);
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1;
+  }
+
+  .shorts-card__views-icon {
+    width: 12px;
+    height: 12px;
+    fill: currentColor;
+  }
+
+  .shorts-card__caption {
+    position: absolute;
+    inset: auto 0 0 0;
+    padding: 28px 14px 14px;
+    background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.75) 100%);
+    z-index: 3;
+  }
+
+  .shorts-card__caption-title {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.35;
+    color: #ffffff;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  }
+
+  .shorts-card__product {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 14px;
+    padding: 4px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: inherit;
+    transition: background-color var(--duration-fast) var(--ease-standard);
+  }
+
+  .shorts-card__product:hover {
+    background-color: var(--color-surface);
+  }
+
+  .shorts-card__product-image {
+    flex: 0 0 68px;
+    width: 68px;
+    height: 68px;
+    background: var(--color-surface);
+    border-radius: 6px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .shorts-card__product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .shorts-card__product-info {
+    flex: 1 1 0;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .shorts-card__product-name {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--color-text);
+    line-height: 1.35;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .shorts-card__product-price {
+    font-family: var(--font-num);
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--color-text-strong);
+    line-height: 1.2;
+  }
+
+  /* --- 실제 숏츠 영상 모달 플레이어 --- */
+  .shorts-modal {
+    position: fixed;
+    inset: 0;
+    z-index: var(--z-dialog, 3000);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.88);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--duration-base) var(--ease-standard);
+  }
+
+  .shorts-modal[data-state="open"] {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .shorts-modal__container {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    height: min(85vh, 700px);
+    aspect-ratio: 9 / 16;
+    background: #000000;
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+    transform: scale(0.95);
+    transition: transform var(--duration-base) var(--ease-standard);
+  }
+
+  .shorts-modal[data-state="open"] .shorts-modal__container {
+    transform: scale(1);
+  }
+
+  .shorts-modal__close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    z-index: 10;
+    width: 38px;
+    height: 38px;
+    border-radius: var(--radius-round);
+    background: rgba(0, 0, 0, 0.65);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+    padding: 0;
+    transition: background-color var(--duration-fast);
+  }
+
+  .shorts-modal__close:hover {
+    background: rgba(0, 0, 0, 0.9);
+  }
+
+  .shorts-modal__close svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .shorts-modal__video-box {
+    position: relative;
+    flex: 1 1 0;
+    width: 100%;
+    height: 100%;
+    background: #000000;
+  }
+
+  .shorts-modal__video-box iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+  }
+
+  .shorts-modal__product-bar {
+    position: absolute;
+    inset: auto 0 0 0;
+    z-index: 5;
+    padding: 12px 14px;
+    background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.92) 25%, #000000 100%);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .shorts-modal__product-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+  }
+
+  .shorts-modal__product-thumb {
+    width: 44px;
+    height: 44px;
+    border-radius: 6px;
+    background: #ffffff;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+
+  .shorts-modal__product-texts {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+
+  .shorts-modal__product-title {
+    font-size: 13px;
+    color: #ffffff;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .shorts-modal__product-price {
+    font-family: var(--font-num);
+    font-size: 14px;
+    color: #ffffff;
+    font-weight: 700;
+  }
+
+  .shorts-modal__product-btn {
+    padding: 8px 14px;
+    background: #ffffff;
+    color: #000000;
+    border-radius: var(--radius-pill);
+    font-size: 13px;
+    font-weight: 700;
+    white-space: nowrap;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 768px) {
+    .section-shorts {
+      padding-top: calc(var(--header-h-pc) + 20px);
+      padding-bottom: calc(var(--bottom-bar-height) + 40px);
+    }
+
+    .shorts__header {
+      margin-bottom: 16px;
+    }
+
+    .shorts__title {
+      font-size: var(--fs-20);
+      line-height: var(--lh-28);
+    }
+
+    .shorts__list {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 12px;
+      gap: 12px;
+    }
+
+    .shorts__list::-webkit-scrollbar {
+      display: none;
+    }
+
+    .shorts-card {
+      flex: 0 0 76%;
+      min-width: 250px;
+      max-width: 320px;
+      scroll-snap-align: start;
+    }
+
+    .shorts-card__product-image {
+      flex: 0 0 58px;
+      width: 58px;
+      height: 58px;
+    }
+
+    .shorts-card__product-name {
+      font-size: 12px;
+    }
+
+    .shorts-card__product-price {
+      font-size: 14px;
+    }
+
+    .shorts-modal__container {
+      max-width: 90vw;
+      height: 75vh;
+    }
+  }
+}

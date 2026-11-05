@@ -1,0 +1,259 @@
+@layer components {
+  .section-collection {
+    padding-block: var(--collection-pt) var(--collection-pb);
+    overflow-x: clip;
+    background: var(--color-bg);
+  }
+
+  .collection__container {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    gap: var(--collection-header-gap);
+  }
+
+  .collection__header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--collection-card-info-gap);
+  }
+
+  .collection__label {
+    font-size: var(--fs-14);
+    font-weight: 700;
+    line-height: var(--lh-20);
+    color: var(--color-text-strong);
+  }
+
+  .collection__title {
+    font-size: var(--fs-24);
+    font-weight: 400;
+    line-height: var(--lh-32);
+    color: var(--color-text-strong);
+  }
+
+  .collection__body {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+    gap: var(--collection-gap);
+  }
+
+  .collection__feature {
+    flex: 0 0 var(--collection-feature-width);
+    width: var(--collection-feature-width);
+    aspect-ratio: 1 / 1;
+    background: var(--color-surface-2);
+  }
+
+  .collection__feature .swiper-slide {
+    height: 100%;
+  }
+
+  .collection__feature-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  .collection__feature .swiper-pagination {
+    --swiper-pagination-color: var(--color-text-inverse);
+    --swiper-pagination-bullet-inactive-color: var(--color-text-inverse);
+    --swiper-pagination-bullet-inactive-opacity: 0.5;
+    --swiper-pagination-bullet-size: 6px;
+    --swiper-pagination-bullet-horizontal-gap: 4px;
+    --swiper-pagination-bottom: 16px;
+  }
+
+  .collection__products {
+    display: flex;
+    flex: 1 1 0;
+    min-width: 0;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: var(--collection-scrollbar-gap);
+  }
+
+  .collection__list {
+    width: 100%;
+    margin-inline: 0;
+  }
+
+  .collection-card {
+    display: flex;
+    height: auto;
+    flex-direction: column;
+    gap: var(--collection-card-info-gap);
+  }
+
+  .collection-card__link {
+    display: flex;
+    flex-direction: column;
+    gap: var(--collection-card-info-gap);
+    color: var(--color-text);
+  }
+
+  .collection-card__image {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 4;
+    border-radius: var(--collection-card-radius);
+    background: var(--color-surface-2);
+    object-fit: cover;
+  }
+
+  .collection-card__name {
+    display: -webkit-box;
+    overflow: hidden;
+    font-size: var(--fs-14);
+    line-height: var(--lh-20);
+    word-break: keep-all;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+  }
+
+  .collection-card__price-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--collection-card-info-gap);
+  }
+
+  .collection-card__price {
+    display: flex;
+    align-items: baseline;
+    gap: var(--collection-card-gap);
+  }
+
+  .collection-card__origin {
+    font-size: var(--fs-12);
+    line-height: var(--lh-16);
+    color: var(--color-text-faint);
+  }
+
+  .collection-card__sale {
+    font-size: var(--fs-14);
+    font-weight: 700;
+    line-height: var(--lh-20);
+    color: var(--color-text-strong);
+  }
+
+  .collection-card__cart {
+    position: relative;
+    display: none;
+    width: var(--collection-cart-size);
+    height: var(--collection-cart-size);
+    background: url("../../images/used/add-cart-mo.3168a725.svg") center / contain no-repeat;
+  }
+
+  .collection-card__cart::after {
+    position: absolute;
+    inset: -12px;
+    content: "";
+  }
+
+  .collection-card__colors {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--collection-color-gap);
+    padding: 3px;
+  }
+
+  .collection-card__color {
+    width: var(--collection-color-size);
+    height: var(--collection-color-size);
+    border: var(--line-hairline, 1px) solid var(--color-border);
+    border-radius: var(--radius-round);
+    background: var(--color-surface-2);
+  }
+
+  .collection-card__color--ivory { background: var(--swatch-ivory); }
+  .collection-card__color--beige { background: var(--swatch-beige); }
+  .collection-card__color--brown { background: var(--swatch-brown); }
+  .collection-card__color--pink { background: var(--swatch-pink); }
+  .collection-card__color--blue { background: var(--swatch-blue); }
+  .collection-card__color--gray { background: var(--swatch-gray); }
+  .collection-card__color--black { background: var(--swatch-black); }
+
+  .collection-card__color--selected {
+    outline: 1px solid var(--color-text-strong);
+    outline-offset: 2px;
+  }
+
+  .collection__products .swiper-scrollbar {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    height: var(--collection-scrollbar-height);
+    border-radius: 0;
+    background: var(--color-border);
+  }
+
+  .collection__products .swiper-scrollbar-drag {
+    border-radius: 0;
+    background: var(--color-text-strong);
+    cursor: grab;
+  }
+
+  .collection-card__link:focus-visible,
+  .collection-card__cart:focus-visible {
+    outline: 2px solid var(--color-text-strong);
+    outline-offset: 2px;
+  }
+
+  @media (max-width: 768px) {
+    .collection__label {
+      font-size: var(--fs-16);
+      line-height: var(--lh-24);
+    }
+
+    .collection__body {
+      flex-direction: column;
+    }
+
+    .collection__feature {
+      flex: 0 0 auto;
+      width: calc(100% + 2 * var(--gutter));
+      margin-inline: calc(-1 * var(--gutter));
+    }
+
+    .collection__products {
+      margin-inline-end: calc(-1 * var(--gutter));
+    }
+
+    .collection__list {
+      width: 100%;
+    }
+
+    .collection-card {
+      --collection-color-size: 20px;
+    }
+
+    .collection-card__name {
+      min-height: calc(2 * var(--lh-20));
+    }
+
+    .collection-card__sale {
+      font-size: var(--fs-16);
+      line-height: var(--lh-24);
+    }
+
+    .collection-card__cart {
+      display: block;
+    }
+
+    .collection__products .swiper-scrollbar {
+      display: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .collection__feature .swiper-wrapper,
+    .collection__list .swiper-wrapper {
+      transition-duration: 0.01ms;
+    }
+  }
+}

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ko" class="shop-document">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>상품 상세 | Discovery Expedition</title>
+    <meta name="description" content="디스커버리 익스페디션 베스트 아이템 상품 상세 정보입니다.">
+    <link rel="stylesheet" href="../css/main.css">
+    <script type="module" src="../js/modules/shop-page.js"></script>
+  </head>
+  <body class="shop-page" data-shop-page="detail">
+    <header class="outer-box shop-header">
+      <div class="inner-box">
+        <div class="part-box shop-header__content">
+          <a class="shop-header__brand" href="../index.html" aria-label="Discovery Expedition 홈">
+            <img src="../images/used/main-logo.svg" alt="" width="133" height="28">
+          </a>
+          <nav class="shop-header__actions" aria-label="쇼핑 메뉴">
+            <a href="../index.html" aria-label="홈">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-6v-7h-4v7H4a1 1 0 0 1-1-1V10Z"></path></svg>
+            </a>
+            <a class="cart-indicator" href="./cart.html" aria-label="장바구니">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l1 13H4L5 8Z"></path><path d="M9 9V6a3 3 0 0 1 6 0v3"></path></svg>
+              <span class="cart-indicator__count" data-js="cart-count" aria-live="polite" hidden>0</span>
+            </a>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <p class="shop-status" data-js="shop-status" role="status" aria-live="polite"></p>
+      <section class="outer-box shop-page__section" aria-labelledby="product-page-title">
+        <div class="inner-box">
+          <div class="part-box shop-detail" data-js="product-detail">
+            <div class="shop-detail__visual">
+              <img data-js="product-image" src="../images/used/best-p1-main.png" alt="" width="675" height="900">
+            </div>
+            <div class="shop-detail__info">
+              <p class="shop-detail__label">BEST ITEM</p>
+              <h1 class="shop-detail__name" id="product-page-title" data-js="product-name">상품 정보를 불러오고 있습니다.</h1>
+              <p class="shop-detail__price" data-js="product-price"></p>
+              <div class="shop-detail__purchase">
+                <button class="shop-button" type="button" data-js="add-to-cart">장바구니</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,51 @@
+@layer layout {
+  .outer-box {
+    width: 100%;
+    padding-block: var(--section-pt) var(--section-pb);
+    background: var(--color-bg);
+  }
+
+  .outer-box--bleed {
+    --gutter: var(--gutter-zero);
+    padding-block: 0;
+  }
+
+  .outer-box--footer {
+    --section-pt: var(--footer-pt);
+    --section-pb: var(--footer-pb);
+    background: var(--footer-bg);
+    position: relative;
+    z-index: 1;
+  }
+
+  .outer-box--header {
+    position: fixed;
+    z-index: var(--z-header);
+    inset: 0 0 auto;
+    padding-block: 0;
+    background: var(--header-bg);
+    color: var(--color-text-inverse);
+  }
+
+  .inner-box {
+    width: 100%;
+    max-width: var(--inner-max);
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+  }
+
+  .part-box {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--part-gap);
+    align-items: flex-start;
+  }
+
+  .part-box--nowrap {
+    flex-wrap: nowrap;
+  }
+
+  .part-box--between {
+    justify-content: space-between;
+  }
+}
