@@ -10,12 +10,12 @@
     <script defer src="./vendor/swiper/swiper-bundle.min.js"></script>
 <script type="module" src="./js/main.js"></script>
   </head>
-  <body>
-    <aside class="outer-box notice-ticker" data-js="notice-ticker" role="region" aria-label="상단 공지사항" aria-roledescription="공지사항 회전" hidden>
+  <body class="notice-ticker-visible">
+    <aside class="outer-box notice-ticker" data-js="notice-ticker" role="region" aria-label="상단 공지사항" aria-roledescription="공지사항 회전" aria-busy="true">
       <div class="inner-box">
         <div class="part-box notice-ticker__content">
           <strong class="notice-ticker__label">Notice</strong>
-          <a class="notice-ticker__link" data-js="notice-ticker-link" aria-live="off"></a>
+          <a class="notice-ticker__link" data-js="notice-ticker-link" aria-live="off">공지사항을 불러오고 있습니다.</a>
           <div class="notice-ticker__controls" role="group" aria-label="공지사항 자동 넘김 제어">
             <button class="notice-ticker__button" type="button" data-js="notice-ticker-pause" aria-label="멈춤">Ⅱ</button>
             <button class="notice-ticker__button" type="button" data-js="notice-ticker-play" aria-label="재생">▶</button>

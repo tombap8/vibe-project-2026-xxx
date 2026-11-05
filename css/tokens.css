@@ -108,6 +108,7 @@
   --focus-outline: 2px;
   --focus-offset: 2px;
   --z-header: 100;
+  --z-notice-ticker: 101;
   --z-floating: 10;
   --z-tabbar: 2001;
   --bottom-bar-height: 64px;

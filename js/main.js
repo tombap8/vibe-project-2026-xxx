@@ -532,7 +532,11 @@ function initFullPageScroll() {
   let lastScrollTime = 0;
   const SCROLL_COOLDOWN = 850;
   const WHEEL_GESTURE_GAP = 120;
+  const SWIPE_THRESHOLD = 50;
   let lastWheelTime = 0;
+  let touchStartY = null;
+  let touchCurrentY = null;
+  let isHeroTouch = false;
 
   // 헤더 스타일 실시간 동기화 (1,2,3페이지: 다크, 3페이지 하단: 화이트 반전)
   function updateHeaderTheme(currentScrollY) {
@@ -544,6 +548,7 @@ function initFullPageScroll() {
     const shortsTop = shortsSection ? shortsSection.offsetTop : (hero3.offsetTop + hero3.offsetHeight);
     const isLight = currentY >= (shortsTop - 80);
     pageHeader.classList.toggle("outer-box--header--light", isLight);
+    tabbar?.classList.toggle("tabbar--light", isLight);
   }
 
   // 히어로 자동 스냅 활성화
@@ -725,6 +730,53 @@ function initFullPageScroll() {
     },
     { passive: false }
   );
+
+  window.addEventListener("touchstart", (event) => {
+    if (!mobileViewport.matches || event.touches.length !== 1) return;
+    if (menu.dataset.state === "open" || menu.dataset.state === "opening") return;
+    if (searchModal?.dataset.state === "open") return;
+    if (document.querySelector(".shorts-modal")?.dataset.state === "open") return;
+
+    const currentY = window.scrollY || window.pageYOffset;
+    const shortsTop = shortsSection?.offsetTop ?? Number.POSITIVE_INFINITY;
+    isHeroTouch = currentY < shortsTop - 20;
+    touchStartY = event.touches[0].clientY;
+    touchCurrentY = touchStartY;
+  }, { passive: true });
+
+  window.addEventListener("touchmove", (event) => {
+    if (!isHeroTouch || touchStartY === null || event.touches.length !== 1) return;
+    event.preventDefault();
+    touchCurrentY = event.touches[0].clientY;
+  }, { passive: false });
+
+  window.addEventListener("touchend", (event) => {
+    if (!isHeroTouch || touchStartY === null) {
+      resetTouchGesture();
+      return;
+    }
+
+    const endY = event.changedTouches[0]?.clientY ?? touchCurrentY;
+    const swipeDistance = touchStartY - endY;
+    resetTouchGesture();
+    if (isScrolling || Math.abs(swipeDistance) < SWIPE_THRESHOLD) return;
+
+    if (swipeDistance > 0 && currentHeroIndex < heroSections.length - 1) {
+      scrollToSection(currentHeroIndex + 1);
+    } else if (swipeDistance > 0 && currentHeroIndex === heroSections.length - 1) {
+      scrollToNormalContent();
+    } else if (swipeDistance < 0 && currentHeroIndex > 0) {
+      scrollToSection(currentHeroIndex - 1);
+    }
+  }, { passive: true });
+
+  window.addEventListener("touchcancel", resetTouchGesture, { passive: true });
+
+  function resetTouchGesture() {
+    touchStartY = null;
+    touchCurrentY = null;
+    isHeroTouch = false;
+  }
 
   window.addEventListener("keydown", (event) => {
     if (menu.dataset.state === "open" || menu.dataset.state === "opening") return;

@@ -1,5 +1,9 @@
 @layer components {
   .notice-ticker {
+    position: fixed;
+    inset-block-start: 0;
+    inset-inline: 0;
+    z-index: var(--z-notice-ticker);
     padding-block: 0;
     border-block-end: var(--line) solid var(--notice-ticker-background);
     background: var(--notice-ticker-background);
@@ -79,6 +83,10 @@
   }
 
   @media (max-width: 768px) {
+    .notice-ticker {
+      max-width: 100vw;
+    }
+
     .notice-ticker__content {
       grid-template-columns: auto minmax(0, 1fr) auto;
       gap: var(--space-1);
@@ -86,6 +94,10 @@
 
     .notice-ticker__controls {
       gap: 0;
+    }
+
+    .notice-ticker__button {
+      width: var(--hit-min);
     }
   }
 }

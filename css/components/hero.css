@@ -182,6 +182,15 @@
       align-items: center;
       padding: var(--tabbar-padding-block) var(--tabbar-padding-inline) calc(var(--tabbar-padding-block) + env(safe-area-inset-bottom, 0px));
       color: var(--color-text-inverse);
+      transition:
+        background-color var(--duration-base) var(--ease-standard),
+        color var(--duration-base) var(--ease-standard);
+    }
+
+    .tabbar.tabbar--light {
+      border-block-start: var(--line) solid var(--color-border);
+      background: var(--color-bg);
+      color: var(--color-text);
     }
 
     .tabbar__item {
@@ -198,9 +207,18 @@
       white-space: nowrap;
     }
 
+    .tabbar.tabbar--light .tabbar__item {
+      color: var(--color-text);
+    }
+
     .tabbar__item img {
       width: var(--tabbar-icon-size);
       height: var(--tabbar-icon-size);
+      transition: filter var(--duration-base) var(--ease-standard);
+    }
+
+    .tabbar.tabbar--light .tabbar__item img {
+      filter: brightness(0);
     }
 
     .tabbar__item--home img {

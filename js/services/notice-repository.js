@@ -1,3 +1,3 @@
-import { createLocalStorageNoticeRepository } from './notice-local-storage-repository.js';
+import { createFirestoreNoticeRepository } from './notice-firestore-repository.js';
 
-export const noticeRepository = createLocalStorageNoticeRepository();
+export const noticeRepository = createFirestoreNoticeRepository();

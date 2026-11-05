@@ -48,15 +48,9 @@ function play(noticePageUrl) {
 
 function closeTicker() {
   if (ticker.hidden) return;
-  const scrollPosition = window.scrollY;
-  const tickerHeight = ticker.offsetHeight;
   pause();
   ticker.hidden = true;
   document.body.classList.remove('notice-ticker-visible');
-  window.scrollTo({
-    top: Math.max(0, scrollPosition - tickerHeight),
-    behavior: 'instant',
-  });
 }
 
 function handleScrollKeydown(event) {
@@ -66,7 +60,15 @@ function handleScrollKeydown(event) {
 }
 
 export function renderNoticeTicker(noticePosts, noticePageUrl) {
-  if (!ticker || !noticePosts.length) return;
+  if (!ticker) return;
+  ticker.setAttribute('aria-busy', 'false');
+  if (!noticePosts.length) {
+    tickerLink.removeAttribute('href');
+    tickerLink.textContent = '등록된 공지사항이 없습니다.';
+    pauseButton.hidden = true;
+    playButton.hidden = true;
+    return;
+  }
 
   posts = noticePosts.slice(0, 3);
   currentIndex = 0;
@@ -94,6 +96,7 @@ export function renderNoticeTicker(noticePosts, noticePageUrl) {
 
 export function showNoticeTickerError() {
   if (!ticker || !tickerLink) return;
+  ticker.setAttribute('aria-busy', 'false');
   tickerLink.removeAttribute('href');
   tickerLink.textContent = '공지사항을 불러오지 못했습니다.';
   tickerLink.setAttribute('role', 'alert');
